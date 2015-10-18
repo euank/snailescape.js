@@ -34,20 +34,27 @@ All of the above escapes apply within double quotes or when not within quotes.
 Escaping a space character or single quote characer is entirely redundant
 within double quotes, but both may be done.
 
-## Modes of operation
+## Error handling
+
+### Error index
+
+Any time the `error` field of the output is set, the `errorNdx` field is also
+set to an integer indicating what offset is erroneous.
+
+### Modes
 
 snailescape has two modes of error handling:
 
 This mode may be toggled by passing the argument `{partial: true}` to the
 constructor. It defaults to false.
 
-## Complete parse errors
+#### Complete parse errors
 
 Complete parse errors operates under the assumption that the given string
 should completely parse with no issues. It should have no trailing characters
 or mismatched quotes, and if it does that's an error.
 
-## Partial parse errors
+#### Partial parse errors
 
 Partial parse errors operates under the assumption that the string might be
 incomplete. this is useful if you are taking user-input as it is being typed
