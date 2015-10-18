@@ -1,0 +1,29 @@
+{
+  "name": "snailescape.js",
+  "version": "1.0.0",
+  "description": "Parse a string similarly to sh, respecting common ANSI escapes and shell quoting",
+  "main": "lib/parser.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "mocha": "mocha",
+    "test": "istanbul cover _mocha"
+  },
+  "keywords": [
+    "shell",
+    "sh",
+    "bash",
+    "splitting",
+    "escapes"
+  ],
+  "repository": "euank/snailescape.js",
+  "author": "Euan",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "fuzzer": "^0.2.0",
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3"
+  }
+}
