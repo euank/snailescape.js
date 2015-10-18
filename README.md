@@ -1,5 +1,9 @@
 # snailescape.js
 
+[![Build Status](https://travis-ci.org/euank/snailescape.js.svg?branch=master)](https://travis-ci.org/euank/snailescape.js)
+[![Coverage Status](https://coveralls.io/repos/euank/snailescape.js/badge.svg?branch=master&service=github)](https://coveralls.io/github/euank/snailescape.js?branch=master)
+
+
 ![Snail Escape](/../imgs/header.png?raw=true "Three lost snails")
 
 Snail Escape is a simple javascript library that implements a sane subset of

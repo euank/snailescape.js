@@ -8,7 +8,8 @@
   },
   "scripts": {
     "mocha": "mocha",
-    "test": "istanbul cover _mocha"
+    "test": "istanbul cover _mocha",
+    "coveralls": "istanbul cover _mocha && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "shell",
@@ -22,6 +23,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "chai": "^3.3.0",
+    "coveralls": "^2.11.4",
     "fuzzer": "^0.2.0",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.3"
