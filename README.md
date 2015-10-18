@@ -4,10 +4,22 @@
 [![Coverage Status](https://coveralls.io/repos/euank/snailescape.js/badge.svg?branch=master&service=github)](https://coveralls.io/github/euank/snailescape.js?branch=master)
 
 
-![Snail Escape](/../imgs/header.png?raw=true "Three lost snails")
+![Snail escape](/../imgs/header.png?raw=true "Three lost snails")
 
-Snail Escape is a simple javascript library that implements a sane subset of
+Snail escape is a simple javascript library that implements a sane subset of
 bash escaping, similar to the ANSI C standard for escapes.
+
+## Supported Quoting
+
+Single quotes, double quotes, and space-separation of parts are supported. This is best explained through an example:
+
+All of the following:
+
+`echo "hello world"`, `echo hello\ world`, `"echo" 'hello world'`
+
+Will be split into:
+
+`["echo", "hello world"]`
 
 ## Supported Escapes
 
@@ -43,7 +55,7 @@ set to an integer indicating what offset is erroneous.
 
 ### Modes
 
-snailescape has two modes of error handling:
+Snail escape has two modes of error handling:
 
 This mode may be toggled by passing the argument `{partial: true}` to the
 constructor. It defaults to false.
