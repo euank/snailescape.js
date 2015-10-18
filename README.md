@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/euank/snailescape.js/badge.svg?branch=master&service=github)](https://coveralls.io/github/euank/snailescape.js?branch=master)
 
 
-![Snail escape](/../imgs/header.png?raw=true "Three lost snails")
+[![Snail escape](/../imgs/header.png?raw=true "Three lost snails")](http://www.pixiv.net/member_illust.php?mode=medium&illust_id=5469308)
 
 Snail escape is a simple javascript library that implements a sane subset of
 bash escaping, similar to the ANSI C standard for escapes.
