@@ -1,4 +1,4 @@
-# snailescape.js
+# snailescape.js :snail:
 
 [![Build Status](https://travis-ci.org/euank/snailescape.js.svg?branch=master)](https://travis-ci.org/euank/snailescape.js)
 [![Coverage Status](https://coveralls.io/repos/euank/snailescape.js/badge.svg?branch=master&service=github)](https://coveralls.io/github/euank/snailescape.js?branch=master)
@@ -92,7 +92,7 @@ if(result.complete && !result.error) {
 ### In regular mode
 
 ```javascript
-var parser = new Parser();
+var parser = new SnailEscape();
 var result = parser.parse("echo hello world");
 if(result.error) {
   console.error("could not parse input: ", result.error);
@@ -106,7 +106,7 @@ if(result.error) {
 ### In partial mode
 
 ```javascript
-var parser = new Parser({partial: true});
+var parser = new SnailEscape({partial: true});
 var result = parser.parse("'arg1' 'arg\\n2' arg\\n3 arg4 arg5");
 if(result.error) {
   console.log("This will never parse! Backspace now (starting at character " + result.error.index);

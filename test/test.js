@@ -1,15 +1,15 @@
 var util = require('util');
 var fs = require('fs');
-var Parser = require('./..');
+var SnailEscape = require('./..');
 var expect = require('chai').expect;
 var fuzzer = require('fuzzer');
 
-describe('Parser', function() {
+describe('SnailEscape', function() {
 
   var partials = ["\\x", '"in double quotes with trailing \\', 'not in quotes with trailing \\', '"missing close quote', "'missing close quote"];
 
   describe('parse', function() {
-    var parser = new Parser();
+    var parser = new SnailEscape();
 
     var files = fs.readdirSync(__dirname + '/cases/');
 
@@ -69,7 +69,7 @@ describe('Parser', function() {
 
   // Partial parses
   describe('parse partial', function() {
-    var parser = new Parser({partial: true});
+    var parser = new SnailEscape({partial: true});
 
     partials.forEach(function(partial) {
       it('should parse partial ' + partial, function() {
