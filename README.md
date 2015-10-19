@@ -112,7 +112,7 @@ if(result.error) {
   console.log("This will never parse! Backspace now (starting at character " + result.error.index);
 } else if(!result.complete) {
   console.log("Keep typing...");
-} else if(!result.complete && !result.error) {
+} else if(result.complete && !result.error) {
   console.log("All done! You typed the below array (as json): ")
   console.log(JSON.stringify(result.parts));
 }
