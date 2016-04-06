@@ -88,4 +88,43 @@ describe('SnailEscape', function() {
       });
     });
   });
+
+  describe('configured quoteCharacters', function() {
+    var parser = new SnailEscape({quoteCharacters: ['/', '"', '$']});
+
+    it('should correctly quote', function() {
+      var result = parser.parse('/foo bar baz/ "foo bar baz" $foo bar baz$');
+        expect(result.complete).to.be.true;
+        expect(result.error).not.to.be.ok;
+        expect(result.parts).to.eql(["foo bar baz", "foo bar baz", "foo bar baz"]);
+    });
+
+    it('should not support nested quotes', function() {
+      var result = parser.parse('/foo \'"bar"\' baz/');
+        expect(result.complete).to.be.true;
+        expect(result.error).not.to.be.ok;
+        expect(result.parts).to.eql(['foo \'"bar"\' baz']);
+    });
+  });
+
+  describe('configured rawQuoteCharacters', function() {
+    var parser = new SnailEscape({rawQuoteCharacters: ['/', '$']});
+
+    it('should correctly quote', function() {
+      var result = parser.parse('/foo \\nbar baz/ $foo  \\bar baz$');
+        expect(result.complete).to.be.true;
+        expect(result.error).not.to.be.ok;
+        expect(result.parts).to.eql(["foo \\nbar baz", "foo  \\bar baz"]);
+    });
+  });
+  describe('configured spaceChars', function() {
+    var parser = new SnailEscape({spaceChars: ['_', ',']});
+
+    it('should correctly split', function() {
+      var result = parser.parse('foo bar baz_a,b cde,"_, spaces in quotes"');
+        expect(result.complete).to.be.true;
+        expect(result.error).not.to.be.ok;
+        expect(result.parts).to.eql(["foo bar baz", "a", "b cde", "_, spaces in quotes"]);
+    });
+  });
 });
