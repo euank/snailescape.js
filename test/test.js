@@ -112,6 +112,13 @@ describe('SnailEscape', function() {
       expect(result.error).not.to.be.ok;
       expect(result.parts).to.eql(["/escaped", "/escaped", "/escaped", "\\$notescaped"]);
     });
+
+    it('should handle mismatched escaped quoteChars', function() {
+      var result = parser.parse('\\$');
+      expect(result.complete).to.be.true;
+      expect(result.error).not.to.be.ok;
+      expect(result.parts).to.eql(['$']);
+    });
   });
 
   describe('configured rawQuoteCharacters', function() {
