@@ -101,9 +101,16 @@ describe('SnailEscape', function() {
 
     it('should not support nested quotes', function() {
       var result = parser.parse('/foo \'"bar"\' baz/');
-        expect(result.complete).to.be.true;
-        expect(result.error).not.to.be.ok;
-        expect(result.parts).to.eql(['foo \'"bar"\' baz']);
+      expect(result.complete).to.be.true;
+      expect(result.error).not.to.be.ok;
+      expect(result.parts).to.eql(['foo \'"bar"\' baz']);
+    });
+
+    it('should correctly escape', function() {
+      var result = parser.parse('"\\/escaped" \\/escaped $\\/escaped$ \'\\$notescaped\'');
+      expect(result.complete).to.be.true;
+      expect(result.error).not.to.be.ok;
+      expect(result.parts).to.eql(["/escaped", "/escaped", "/escaped", "\\$notescaped"]);
     });
   });
 
@@ -112,19 +119,33 @@ describe('SnailEscape', function() {
 
     it('should correctly quote', function() {
       var result = parser.parse('/foo \\nbar baz/ $foo  \\bar baz$');
-        expect(result.complete).to.be.true;
-        expect(result.error).not.to.be.ok;
-        expect(result.parts).to.eql(["foo \\nbar baz", "foo  \\bar baz"]);
+      expect(result.complete).to.be.true;
+      expect(result.error).not.to.be.ok;
+      expect(result.parts).to.eql(["foo \\nbar baz", "foo  \\bar baz"]);
+    });
+
+    it('should correctly escape', function() {
+      var result = parser.parse('"\\/escaped" \\/escaped $\\/notescaped$ /\\$notescaped/');
+      expect(result.complete).to.be.true;
+      expect(result.error).not.to.be.ok;
+      expect(result.parts).to.eql(["/escaped", "/escaped", "\\/notescaped", "\\$notescaped"]);
     });
   });
   describe('configured spaceChars', function() {
-    var parser = new SnailEscape({spaceChars: ['_', ',']});
+    var parser = new SnailEscape({spaceCharacters: ['_', ',']});
 
     it('should correctly split', function() {
       var result = parser.parse('foo bar baz_a,b cde,"_, spaces in quotes"');
-        expect(result.complete).to.be.true;
-        expect(result.error).not.to.be.ok;
-        expect(result.parts).to.eql(["foo bar baz", "a", "b cde", "_, spaces in quotes"]);
+      expect(result.complete).to.be.true;
+      expect(result.error).not.to.be.ok;
+      expect(result.parts).to.eql(["foo bar baz", "a", "b cde", "_, spaces in quotes"]);
+    });
+
+    it('should correctly escape', function() {
+      var result = parser.parse('foo\\_bar,"foo\\_bar"');
+      expect(result.complete).to.be.true;
+      expect(result.error).not.to.be.ok;
+      expect(result.parts).to.eql(["foo_bar", "foo_bar"]);
     });
   });
 });
